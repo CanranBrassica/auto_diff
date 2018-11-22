@@ -11,12 +11,12 @@ template <size_t N>
 struct Var
 {
     template <size_t M>
-    constexpr auto diff(Var<M> const& v) const
+    constexpr auto diff([[maybe_unused]] Var<M> const& v) const
     {
         return Zero{};
     }
 
-    constexpr auto diff(Var<N> const& v) const
+    constexpr auto diff([[maybe_unused]] Var<N> const& v) const
     {
         return One{};
     }

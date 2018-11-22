@@ -24,7 +24,7 @@ std::ostream& operator<<(std::ostream& os, BinOp<Op, L, R> const& v)
 }
 
 template <size_t N>
-std::ostream& operator<<(std::ostream& os, Var<N> const& v)
+std::ostream& operator<<(std::ostream& os, [[maybe_unused]] Var<N> const& v)
 {
     return os << "v_" << N;
 }
@@ -49,6 +49,18 @@ template <class X>
 std::ostream& set_ostream_impl(std::ostream& os, MonoOp<Log, X> const& v)
 {
     return os << "log(" << v.x_ << ")";
+}
+
+template <class X>
+std::ostream& set_ostream_impl(std::ostream& os, MonoOp<Sin, X> const& v)
+{
+    return os << "sin(" << v.x_ << ")";
+}
+
+template <class X>
+std::ostream& set_ostream_impl(std::ostream& os, MonoOp<Cos, X> const& v)
+{
+    return os << "cos(" << v.x_ << ")";
 }
 
 template <class L, class R>

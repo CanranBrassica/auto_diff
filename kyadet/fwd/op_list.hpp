@@ -15,6 +15,10 @@ class Exp;
 
 class Log;
 
+class Sin;
+
+class Cos;
+
 // bin op
 class Add;
 
@@ -61,6 +65,18 @@ constexpr auto log(One const&) noexcept
 constexpr auto log(Zero const&)
 {
     //throw std::exception{"division by zero"};
+}
+
+template <class X>
+constexpr auto sin(X const& x) noexcept
+{
+    return MonoOp<Sin, X>{x};
+}
+
+template <class X>
+constexpr auto cos(X const& x) noexcept
+{
+    return MonoOp<Cos, X>{x};
 }
 
 // operator+
@@ -186,6 +202,8 @@ constexpr auto pow(L const& l, One const&) noexcept
 
 #include "mono_op/exp.hpp"
 #include "mono_op/log.hpp"
+#include "mono_op/sin.hpp"
+#include "mono_op/cos.hpp"
 
 #include "bin_op/add.hpp"
 #include "bin_op/sub.hpp"
