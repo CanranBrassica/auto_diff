@@ -4,4 +4,8 @@ project(kyadet)
 set(CMAKE_CXX_STANDARD 17)
 #set(CMAKE_CXX_COMPILER /usr/bin/g++)
 
-add_executable(main main2.cpp)
+enable_testing()
+
+include_directories(include)
+
+add_subdirectory(test)
